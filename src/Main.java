@@ -90,7 +90,10 @@ class FuelCosts {
             }
         }while (!done);
 
-        //costForHundred = 100 * gasPrice;
+        costForHundred = (100/fuelEfficiency) * gasPrice;
+        System.out.printf("To go 100 miles would cost you $%.2f.%n", costForHundred);
+        maxDistance = tankGallons*fuelEfficiency;
+        System.out.printf("With " + tankGallons + " gallons in the tank you are able to travel %.2f miles.%n", maxDistance);
     }
 }
 
