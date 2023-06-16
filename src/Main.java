@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        CtoFConverter.main(args);
-        FuelCosts.main(args);
-        RectangleInfo.main(args);
+        //CtoFConverter.main(args);
+        //FuelCosts.main(args);
+        //RectangleInfo.main(args);
         MetricConverter.main(args);
         HighOrLow.main(args);
     }
@@ -152,7 +152,30 @@ class RectangleInfo {
 
 class MetricConverter {
     public static void main(String[] args){
-        System.out.println("Metric Converter");
+        double metricMeasurement = 0;
+        double inchesMeasurement = 0;
+        double feetMeasurement = 0;
+        double milesMeasurement = 0;
+        boolean done = false;
+        String trash = "";
+
+        Scanner in = new Scanner(System.in);
+
+        do {
+            System.out.print("What is the measurement, in meters? ");
+            if (in.hasNextDouble()){
+                metricMeasurement = in.nextDouble();
+                done = true;
+                inchesMeasurement = metricMeasurement * 39.3701;
+                feetMeasurement = metricMeasurement * 3.28084;
+                milesMeasurement = metricMeasurement * 0.000621371;
+                System.out.printf(metricMeasurement + " meters is equal to %.2f inches, %.2f feet, and %.2f miles.%n", inchesMeasurement, feetMeasurement, milesMeasurement);
+            }
+            else {
+                trash = in.nextLine();
+                System.out.println("Enter a valid value, not " + trash + ".");
+            }
+        }while (!done);
     }
 }
 
