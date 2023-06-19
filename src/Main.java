@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -181,6 +182,40 @@ class MetricConverter {
 
 class HighOrLow {
     public static void main(String[] args){
-        System.out.println("High or low");
+        Random random = new Random();
+        Scanner in = new Scanner(System.in);
+
+        String trash = "";
+        int randomNumber = random.nextInt(1, 10);
+        int userGuess = 0;
+        boolean done = false;
+        System.out.println("I have chosen a random number between 1 and 10, inclusive.");
+        do {
+            System.out.print("What is my secret number? ");
+            if (in.hasNextInt()){
+                userGuess = in.nextInt();
+
+                if (0 < userGuess && userGuess <= 10){
+                    System.out.println("You guessed " + userGuess + ".");
+                    done = true;
+
+                    System.out.println("The number was " + randomNumber + ".");
+                    if (userGuess > randomNumber) {System.out.println("Your guess was greater than the number I was thinking of.");}
+                    else if (userGuess < randomNumber) {System.out.println("Your guess was less than the number I was thinking of.");}
+                    else {System.out.println("You guessed my number!");}
+                }
+                else {
+                    System.out.println("Enter a valid number between 1 and 10, not " + userGuess + ".");
+                    System.out.println("Try again.");
+                }
+            }
+            else {
+                in.nextLine();
+                trash = in.nextLine();
+                System.out.println("Enter a valid number between 1 and 10, not " + trash + ".");
+                System.out.println("Try again.");
+            }
+        } while (!done);
+
     }
 }
